@@ -7,16 +7,31 @@
 </head>
 <body>
 
-    <a href="{{ route('contas.index') }}">Listar</a><br>
+    <a href="{{ route('contas.index') }}">
+        <button type="button">Listar</button><br>
+    </a><br>
+
+    <a href="{{ route('contas.edit', ['conta' => $conta->id]) }}">
+        <button type="button">Editar</button>
+    </a> <br>
+   
     
     <h2>Detalhes da Conta</h2>
 
     {{-- Verificar se existe a sessão "sucess" e imprimir o valor --}} 
     @if(session('success'))
-        <span style="color: green;">
+        <p style="color: green;">
             {{ session('success') }}
-        </span>
+        </p>
     @endif
+
+    ID: {{ $conta->id }} <br>
+    Nome: {{ $conta->id }} <br>
+    Valor:{{ 'R$' .number_format($conta->valor, 2,',','.') }}<br>
+    Vencimento:{{ \Carbon\Carbon::parse($conta->vencimento)->tz('America/Sao_Paulo')->format('d/m/y') }}<br>
+    Cadastrado: {{ \Carbon\Carbon::parse($conta->created_at)->tz('America/Sao_Paulo')->format('d/m/y H:i:s') }}<br>
+    Editado: {{ \Carbon\Carbon::parse($conta->updated_at)->tz('America/Sao_Paulo')->format('d/m/y  H:i:s') }}<br>
+
 
 </body>
 </html>

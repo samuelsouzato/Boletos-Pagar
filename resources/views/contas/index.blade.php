@@ -7,23 +7,56 @@
 </head>
     <body>
 
-        <h2>Menu de Contas</h2>
+        <a href='/'>
+            <button type="button">Página inicial</button>
+        </a>  
+        <br><br>        
 
-           
-            <a href='/'>Páginal inicial</a>  
-            <br><br>  
+        <a href="{{ route('contas.create') }}">
+            <button type="button">Cadastrar</button>
+        </a><br>
+        
+        <h2>Listar as Contas</h2>
 
-            <a href="{{ route('contas.create') }}">Cadastrar conta à pagar</a>
-            <br><br>
+        {{-- Verificar se existe a sessão "success e imprimir o valor --}}
+        @if(session('success'))
+        <p style="color: green;">
+            {{ session('success') }}
+        </p>
+    @endif
 
-            <a href="{{ route('contas.show') }}">Visulizar contas pagas</a>
-            <br><br>
+        @forelse ($contas as $conta)
 
-            <a href="{{ route('contas.edit') }}">Editar</a>
-            <br><br>
+             ID: {{ $conta->id }}<br>
+             Nome:{{ $conta->nome }}<br>
+             Valor:{{ 'R$' .number_format($conta->valor, 2,',','.') }}<br>
+             Vencimento:{{ \Carbon\Carbon::parse($conta->vencimento)->tz('America/Sao_Paulo')->format('d/m/y') }}<br><br>
+
+             <a href="{{ route('contas.show', ['conta' => $conta->id]) }}">
+                <button type="button">Visualizar</button>
+             </a><br><br>
+
+             <a href="{{ route('contas.edit', ['conta' => $conta->id]) }}">
+             <button type="button">Editar</button>
+                </a><br><br>
             
-             {{--<a href="{{ route('contas.destroy') }}">Apagar</a><br>--}}
-             
+                <form action="{{ route('contas.destroy', ['conta' => $conta->id]) }}"method="POST">
+                    @csrf
+                    @method('delete')
+
+                    <button type="submit" onclick="return confirm('Tem certeza que deseja apagar esta conta?')">Apagar</button>
+                    <br><br>
+
+
+                </form>
+
+            <hr>
+
+        @empty
+
+            <span style="color: red">Nenhuma conta encontrada!!</span>
+
+        @endforelse
         
 
     </body>

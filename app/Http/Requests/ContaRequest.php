@@ -22,7 +22,7 @@ class ContaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nome' => 'required',
+            'nome' => 'required|min:3|max:25',
             'valor' => 'required',
             'vencimento' => 'required',
          ];
@@ -31,9 +31,16 @@ class ContaRequest extends FormRequest
     public function messages(): array
     {
         return [
+            
             'nome.required' => 'O campo nome é obrigatório!!',
+            'nome.min' => 'O campo de ver ao menos 3 caracteres!!',
+            'nome.max' => 'O campo de ver no máximo 25 caracteres!!',
             'valor.required' => 'O campo valor é obrigatório!!',
             'vencimento.required' => 'O campo vencimento é obrigatório!!',
+            
         ];
     }
+
+    
+
 }

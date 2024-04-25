@@ -24,26 +24,39 @@
     @endif
     
 
-    <form action="{{ route('contas.store') }}" method="POST">
+
+    <form action="{{ route('contas.store') }}"
+     method="POST">
         @csrf
 
         <label> Nome: </label>
-        <input type="text" name="nome" id="nome" placeholder="Tipo de conta" value="{{ old('nome') }}">
-        <br><br>
+            <input  type="text"
+
+                    name="nome" 
+                    id="nome" 
+                    placeholder="Tipo de conta" 
+                    value="{{ old('nome') }}">
+                    
+            <br><br>
+
 
         <label> Valor: </label>
-        <input type="text" name="valor" id="valor" placeholder="R$00.00" value="{{ old('valor') }}" >
-        <br><br>
+            <input  type="text"
+
+                    name="valor" 
+                    id="valor" 
+                    placeholder="R$00.00" 
+                    value="{{ old('valor') }}" >
+            <br><br>
+
 
         <label> Vencimento: </label>
-        <input type="date" name="vencimento" id="nome"value="{{ old('vencimento') }}">
+            <input  type="date" 
+                    name="vencimento" 
+                    id="nome"value="{{ old('vencimento') }}">
         <br><br>
 
         <button type="submit">Cadastrar</button>
-
-        
-
-
 
     </form>
 

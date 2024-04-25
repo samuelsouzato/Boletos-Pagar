@@ -37,14 +37,17 @@
              </a><br><br>
 
              <a href="{{ route('contas.edit', ['conta' => $conta->id]) }}">
-             <button type="button">Editar</button>
-                </a><br><br>
+                <button type="button">Editar</button>
+            </a><br><br>
             
-                <form action="{{ route('contas.destroy', ['conta' => $conta->id]) }}"method="POST">
+                <form action="{{ route('contas.destroy', ['conta' => $conta->id]) }}
+                    "method="POST">
                     @csrf
                     @method('delete')
 
-                    <button type="submit" onclick="return confirm('Tem certeza que deseja apagar esta conta?')">Apagar</button>
+                    <button type="submit" 
+                            onclick="return 
+                            confirm('Tem certeza que deseja apagar esta conta?')">Apagar</button>
                     <br><br>
 
 

@@ -32,11 +32,11 @@ class ContaRequest extends FormRequest
     {
         return [
             
-            'nome.required' => 'O campo nome é obrigatório!!',
-            'nome.min' => 'O campo de ver ao menos 3 caracteres!!',
-            'nome.max' => 'O campo de ver no máximo 25 caracteres!!',
-            'valor.required' => 'O campo valor é obrigatório!!',
-            'vencimento.required' => 'O campo vencimento é obrigatório!!',
+            'nome.required' => 'O campo "Nome" é obrigatório!!',
+            'nome.min' => 'O campo "Nome" deve ter no mínimo 3 caracteres!!',
+            'nome.max' => 'O campo "Nome"" deve ter no máximo 25 caracteres!!',
+            'valor.required' => 'O campo "Valor"" é obrigatório!!',
+            'vencimento.required' => 'O campo "Vencimento" é obrigatório!!',
             
         ];
     }
